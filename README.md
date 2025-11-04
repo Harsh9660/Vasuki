@@ -10,12 +10,14 @@ Quick start (development)
 
 1. Backend
 
+First, change into the backend directory: `cd backend`
+
 ```bash
 # create a venv, install deps, run backend
 python -m venv .venv
 source .venv/bin/activate
-pip install -r backend/requirements.txt
-uvicorn backend.app.main:app --host 0.0.0.0 --port 8000 --reload
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 2. Frontend
@@ -44,4 +46,3 @@ Next steps
 - Add docker-compose for local full-stack run
 - Add tests and CI
 - Harden the agent (rate limits, caching, streaming responses)
-

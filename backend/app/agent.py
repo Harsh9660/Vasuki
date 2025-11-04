@@ -16,8 +16,11 @@ async def generate_response(message: str, history: list = None, stream: bool = F
     api_key = os.getenv("OPENAI_API_KEY")
     model = os.getenv("OPENAI_MODEL", DEFAULT_MODEL)
     if not api_key:
-        # Offline development fallback
-        return {"text": f"Vasuki (offline): I received: {message}"}
+        # Offline development fallback - must also support streaming
+        async def offline_streamer():
+            yield f"Vasuki (offline): I received: {message}"
+
+        return offline_streamer() if stream else {"text": f"Vasuki (offline): I received: {message}"}
 
     url = "https://api.openai.com/v1/chat/completions"
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
