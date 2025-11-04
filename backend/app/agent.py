@@ -27,7 +27,7 @@ async def generate_response(message: str, history: list = None, stream: bool = F
 
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     if history:
-        # history is expected as list of {role: 'user'|'assistant', content: '...'}
+      
         messages.extend(history)
     messages.append({"role": "user", "content": message})
 

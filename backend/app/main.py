@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from dotenv import load_dotenv
 import os
-from .agent import generate_response
+from app.agent import generate_response
 
 load_dotenv()
 
