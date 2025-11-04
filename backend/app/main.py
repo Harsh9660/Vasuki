@@ -29,7 +29,8 @@ async def chat_endpoint(payload: dict):
         raise HTTPException(status_code=400, detail="`message` field required")
 
     if stream:
-        return StreamingResponse(generate_response(message, history, stream=True), media_type="text/event-stream")
+        response_generator = await generate_response(message, history, stream=True)
+        return StreamingResponse(response_generator, media_type="text/event-stream")
     else:
         resp = await generate_response(message, history, stream=False)
         return {"reply": resp["text"]}
