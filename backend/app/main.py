@@ -24,7 +24,7 @@ async def root():
 async def chat_endpoint(payload: dict):
     message = payload.get("message")
     history = payload.get("history", [])
-    stream = payload.get("stream", True) # Default to streaming
+    stream = payload.get("stream", True) 
     if not message:
         raise HTTPException(status_code=400, detail="`message` field required")
 

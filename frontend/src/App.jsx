@@ -9,7 +9,7 @@ export default function App(){
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
-    // Scroll to the bottom of the chat container whenever messages change
+    
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
@@ -29,7 +29,7 @@ export default function App(){
     setMessage("")
     setLoading(true)
 
-    // Add a placeholder for Vasuki's response
+   
     setMessages(prev => [...prev, {from: 'vasuki', text: '...'}]);
 
     try{
