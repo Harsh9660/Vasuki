@@ -17,8 +17,9 @@ app.add_middleware(
 )
 
 @app.get("/")
-async def root():
+async def root():   
     return {"message": "Vasuki backend running"}
+
 
 @app.post("/chat")
 async def chat_endpoint(payload: dict):
